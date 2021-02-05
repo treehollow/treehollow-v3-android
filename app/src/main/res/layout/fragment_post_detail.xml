@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.postdetail.PostDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?color_all_card_background"
+        tools:context=".ui.postdetail.PostDetailFragment">
+
+        <LinearLayout
+            android:id="@+id/tmp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/swipe_refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/detail_recycle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:orientation="vertical" />
+                    <!--TODO: add fast scroll
+                    https://blog.stylingandroid.com/recyclerview-fastscroll-part-1/-->
+
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:orientation="vertical"
+                    app:layout_dodgeInsetEdges="bottom">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab_refresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:layout_marginVertical="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:backgroundTint="?color_all_background"
+                        app:borderWidth="0dp"
+                        app:srcCompat="@drawable/ic_refresh"
+                        tools:ignore="ContentDescription" />
+
+                    <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+                    <!--                android:id="@+id/fab_comment"-->
+                    <!--                android:layout_width="wrap_content"-->
+                    <!--                android:layout_height="wrap_content"-->
+                    <!--                android:layout_gravity="top|end"-->
+                    <!--                android:layout_marginVertical="6dp"-->
+                    <!--                android:layout_marginEnd="12dp"-->
+                    <!--                android:backgroundTint="?color_all_background"-->
+                    <!--                app:borderWidth="0dp"-->
+                    <!--                app:srcCompat="@drawable/ic_add"-->
+                    <!--                tools:ignore="ContentDescription" />-->
+
+
+                </LinearLayout>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <LinearLayout
+                android:id="@+id/bottom_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="?color_all_card_background"
+                android:baselineAligned="false"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:transitionGroup="true"
+                android:transitionName="bottom">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/reply_hint"
+                    style="@style/TextInputOutlinesStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:textColorHint="?color_all_font_alt"
+                    app:counterMaxLength="817">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reply_edit_text"
+                        style="@style/TextInputEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapSentences|textMultiLine|textAutoCorrect"
+                        android:maxLength="10000"
+                        android:maxLines="10"
+                        android:padding="12dp"
+                        android:textColor="?color_all_font"
+                        android:textColorHint="?color_all_font_alt"
+                        android:textSize="14sp"
+                        app:endIconMode="clear_text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/reply_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/transparent"
+                    android:minWidth="0dp"
+                    android:src="@drawable/ic_baseline_image_24"
+                    android:tint="?color_all_font" />
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/reply_submit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/transparent"
+                        android:minWidth="0dp"
+                        android:src="@drawable/ic_send"
+                        android:tint="?color_all_font" />
+
+                    <ProgressBar
+                        android:id="@+id/reply_progress"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp" />
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

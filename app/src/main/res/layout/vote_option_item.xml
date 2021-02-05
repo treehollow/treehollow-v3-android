@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vote"
+            type="com.github.treehollow.data.VoteState" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/vote_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="2dp"
+        android:background="@drawable/view_shape_vote_option"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/option_text_view_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="4dp"
+            android:text="@{vote.option}"
+            android:textColor="?color_all_font" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf" />
+
+        <ImageView
+            android:id="@+id/checked"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="4dp"
+            android:src="@drawable/ic_check"
+            android:visibility="gone"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/option_text_view_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="4dp"
+            android:text="@{vote.num}"
+            android:textColor="?color_all_font"
+            app:gone="@{!vote.voted()}"
+            tools:ignore="RelativeOverlap" />
+
+    </LinearLayout>
+
+</layout>

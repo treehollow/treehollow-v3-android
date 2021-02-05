@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="post"
+            type="com.github.treehollow.data.PostState" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/post_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?color_all_card_background"
+        android:clickable="true"
+        android:clipChildren="false"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="true"
+        android:transitionName="post"
+        app:cardCornerRadius="10dp">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/expanded"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="10dp"
+                tools:ignore="UselessParent">
+
+                <!--Header-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!--Avatar-->
+                        <ImageView
+                            android:id="@+id/post_avatar"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:adjustViewBounds="true"
+                            tools:ignore="ContentDescription" />
+
+                        <!--Middle-->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/post_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingHorizontal="6dp"
+                                android:text="@{post.id()}"
+                                android:textColor="?color_all_font"
+                                android:transitionName="id" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/post_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingHorizontal="6dp"
+                                android:text="@{post.timeString()}"
+                                android:textColor="?color_all_font_alt"
+                                tools:ignore="RtlSymmetry" />
+
+                        </LinearLayout>
+
+                        <!--Timeline Tag-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/timeline_tag_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="4dp"
+                            android:layout_marginVertical="8dp"
+                            android:backgroundTint="?color_all_button"
+                            android:clickable="true"
+                            android:clipChildren="false"
+                            android:focusable="true"
+                            app:cardCornerRadius="8dp"
+                            app:gone="@{!post.showTimelineTag}">
+
+                            <TextView
+                                android:id="@+id/post_tag_timeline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="8dp"
+                                android:layout_marginVertical="2dp"
+                                android:backgroundTint="?color_all_background"
+                                android:maxEms="6"
+                                android:textColor="?color_all_font_button"
+                                android:textSize="14sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!--Right timeline only-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginTop="0dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            app:gone="@{post.inRandomMode}">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/star_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:paddingStart="6dp"
+                                android:text="@{post.likeNum()}"
+                                android:textColor="?color_all_font_alt"
+                                app:gone="@{post.fold}"
+                                tools:ignore="RtlSymmetry" />
+
+                            <ImageView
+                                android:id="@+id/star_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:paddingEnd="10dp"
+                                android:src="@{post.post_data.attention ? @drawable/ic_star : @drawable/ic_star_alt }"
+                                app:gone="@{post.fold}"
+                                tools:ignore="ContentDescription,RtlSymmetry" />
+
+                            <!--                            <ImageView-->
+                            <!--                                android:id="@+id/post_menu"-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:layout_margin="4dp"-->
+                            <!--                                android:paddingHorizontal="6dp"-->
+                            <!--                                android:src="@drawable/ic_more"-->
+                            <!--                                tools:ignore="ContentDescription" />-->
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--Random Tag-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/random_tag_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="6dp"
+                        android:backgroundTint="?color_all_button"
+                        android:clickable="true"
+                        android:clipChildren="false"
+                        android:focusable="true"
+                        app:cardCornerRadius="10dp"
+                        app:gone="@{!post.showRandomTag}">
+
+                        <TextView
+                            android:id="@+id/post_tag_random"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginVertical="2dp"
+                            android:backgroundTint="?color_all_background"
+                            android:textColor="?color_all_font_button"
+                            android:textSize="14sp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <!--Fold-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:gone="@{post.isFold()}"
+                    tools:ignore="UselessParent">
+
+                    <!--Quote-->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/quote_post_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginVertical="6dp"
+                        android:backgroundTint="?color_all_background"
+                        android:clickable="true"
+                        android:clipChildren="false"
+                        android:descendantFocusability="blocksDescendants"
+                        android:focusable="true"
+                        app:cardCornerRadius="10dp"
+                        app:gone="@{post.hasNoQuote()}">
+
+
+                        <LinearLayout
+                            android:id="@+id/quote_linear_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipChildren="false"
+                            android:orientation="vertical">
+
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/post_quote_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingHorizontal="10dp"
+                                android:paddingTop="10dp"
+                                android:text="@{post.quoteId()}"
+                                android:textColor="?color_all_font"
+                                android:transitionName="quote_id" />
+
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/post_quote_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:maxLines="5"
+                                android:paddingHorizontal="10dp"
+                                android:paddingBottom="10dp"
+                                android:singleLine="false"
+                                android:text="@{post.quoteText()}"
+                                android:textColor="?color_all_font"
+                                android:transitionName="quote_content" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!--Text-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/post_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="@{post.maxLines}"
+                        android:paddingHorizontal="26dp"
+                        android:paddingVertical="10dp"
+                        android:singleLine="false"
+                        android:textColor="?color_all_font"
+                        android:transitionName="content" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/redirects_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="6dp"
+                        android:backgroundTint="?color_all_button"
+                        android:clickable="true"
+                        android:clipChildren="false"
+                        android:focusable="true"
+                        app:cardCornerRadius="4dp"
+                        app:gone="@{!post.haveRedirectOtherThanQuote()}">
+
+                        <TextView
+                            android:id="@+id/redirects_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="8dp"
+                            android:layout_marginVertical="2dp"
+                            android:backgroundTint="?color_all_background"
+                            android:text="@string/redirect_to"
+                            android:textColor="?color_all_font_button"
+                            android:textSize="14sp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!--Image-->
+                    <ImageView
+                        android:id="@+id/post_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="600dp"
+                        android:paddingHorizontal="16dp"
+                        app:gone="@{!post.hasImage()}"
+                        tools:ignore="ContentDescription" />
+
+                    <!--Vote-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_votes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="5dp"
+                        app:gone="@{post.hasNoVotes()}" />
+
+                    <!--Comment-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_comments"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:nestedScrollingEnabled="false"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="16dp"
+                        app:gone="@{post.hasNoComments()}" />
+
+                    <!--More comment-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="@{post.moreCommentsText}"
+                        android:textColor="?color_all_font"
+                        app:gone="@{!post.hasMoreComments()}" />
+
+                    <!--Random Bottom-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:gone="@{!post.randomBottomShow}">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/random_star_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="@{post.likeNum()}"
+                            android:textColor="?color_all_font"
+                            tools:ignore="RtlSymmetry" />
+
+                        <ImageView
+                            android:id="@+id/random_star_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:src="@{@drawable/ic_star_count}"
+                            tools:ignore="ContentDescription,RtlSymmetry" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/random_reply_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="@{post.replyNum()}"
+                            android:textColor="?color_all_font"
+                            tools:ignore="RtlSymmetry" />
+
+                        <ImageView
+                            android:id="@+id/random_star_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:src="@{@drawable/ic_comment}"
+                            tools:ignore="ContentDescription,RtlSymmetry" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

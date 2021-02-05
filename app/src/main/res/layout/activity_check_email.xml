@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.login.CheckEmailViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?color_all_background"
+        tools:context=".ui.login.CheckEmailActivity">
+
+        <androidx.appcompat.widget.ActionMenuView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/imageButton_"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="?color_all_background"
+                android:src="@drawable/ic_back" />
+        </androidx.appcompat.widget.ActionMenuView>
+
+        <!--        <include layout="@layout/layout_actionbar_back" -->
+        <!--                 tools:layout_editor_absoluteX="0dp"-->
+        <!--                 tools:layout_editor_absoluteY="26dp"/>-->
+        <com.google.android.material.circularreveal.CircularRevealLinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="124dp"
+            android:layout_marginEnd="16dp"
+            android:background="?color_all_background"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:padding="20sp"
+            android:weightSum="1"
+            app:gone="@{vm.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_text_field"
+                style="@style/TextInputOutlinesStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="?color_all_background"
+                android:gravity="center"
+                android:padding="10sp"
+                android:textColorHint="?color_all_font_alt">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="156dp"
+                    android:layout_height="wrap_content"
+                    android:background="?color_all_card_background"
+                    android:hint="@string/input_email"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="?color_all_font"
+                    android:textColorHint="?color_all_font_alt"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_suffix_menu"
+                style="@style/TextInputOutlineDropDownStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:padding="10sp"
+                android:textColor="?color_all_font"
+                android:textColorHint="?color_all_font_alt">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:background="?color_all_card_background"
+                    android:hint="@string/email_suffix_string"
+                    android:singleLine="true"
+                    android:textColor="?color_all_font"
+                    android:textColorHint="?color_all_font"
+                    android:textSize="14sp"
+                    tools:listitem="@layout/list_item" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.circularreveal.CircularRevealLinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_checkEmail_continue"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="72sp"
+            android:backgroundTint="?color_all_button"
+            android:text="@string/next"
+            android:textColor="?color_all_font_button"
+            android:textSize="16sp"
+            app:gone="@{vm.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_checkEmail_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="#00000000"
+            android:indeterminateTint="?color_all_button_alt"
+            app:gone="@{!vm.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.89" />
+
+        <!--        <com.google.android.material.textview.MaterialTextView-->
+        <!--            android:id="@+id/textView_checkEmail_readUserCode"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:text="@string/read_usercode"-->
+        <!--            android:textColor="?color_all_font_alt"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/button_checkEmail_continue" />-->
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_checkEmail_inputHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/email_hint"
+            android:textColor="?color_all_font"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

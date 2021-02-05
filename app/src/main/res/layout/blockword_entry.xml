@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="?color_all_background">
+
+    <EditText
+        android:id="@+id/block_word_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="?color_all_card_background"
+        android:hint="@string/input_block_word"
+        android:textColorHint="?color_all_font_alt"
+        android:textColor="?color_all_font"
+        android:padding="8dp"
+        android:drawableEnd="@drawable/ic_cancel"
+        android:textSize="16sp" />
+</LinearLayout>

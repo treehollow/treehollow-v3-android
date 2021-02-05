@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.login.WelcomeViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?color_all_background"
+        tools:context=".ui.login.WelcomeActivity">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView_welcome_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/welcome"
+            android:src="@drawable/fig_welcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_welcome_chooseSchool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/choose_school_hollow"
+            android:textColor="?color_all_font"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_welcome_header" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_welcome_chooseSchool_alt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_hollow_of_school"
+            android:textColor="?color_all_font_alt"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView_welcome_chooseSchool"
+            app:layout_constraintStart_toStartOf="@+id/textView_welcome_chooseSchool"
+            app:layout_constraintTop_toBottomOf="@+id/textView_welcome_chooseSchool" />
+
+        <ProgressBar
+            android:id="@+id/progressbar_welcome_loading"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="#00000000"
+            android:indeterminateTint="?color_all_button_alt"
+            app:gone="@{!vm.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.806" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/select_thu"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:backgroundTint="?color_all_card_background"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/thu_hollow"
+            android:textColor="?color_all_font"
+            android:textSize="14sp"
+            app:cornerRadius="4dp"
+            app:gone="@{vm.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_welcome_chooseSchool_alt" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/select_pku"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="?color_all_card_background"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/pku_hollow"
+            android:textColor="?color_all_font"
+            android:textSize="14sp"
+            app:cornerRadius="4dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/select_thu"
+            app:layout_constraintTop_toBottomOf="@+id/select_thu" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/select_other"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="?color_all_card_background"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/other_hollow"
+            android:textColor="?color_all_font"
+            android:textSize="14sp"
+            app:cornerRadius="4dp"
+            app:gone="@{vm.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_pku" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_welcome_authRequired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/login_need_school_email"
+            android:textColor="?color_all_font_alt"
+            android:textSize="14sp"
+            app:gone="@{vm.loading}"
+            app:layout_constraintEnd_toEndOf="@+id/textView_welcome_chooseSchool"
+            app:layout_constraintStart_toStartOf="@+id/textView_welcome_chooseSchool"
+            app:layout_constraintTop_toBottomOf="@+id/select_other" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

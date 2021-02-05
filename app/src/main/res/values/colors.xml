@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <!--    colors for dark    -->
+    <color name="all_background_dark">#FF1A1A2F</color>
+    <color name="all_card_background_dark">#FF222240</color>
+    <color name="all_font_dark">#FFFEFEFE</color>
+    <!--    wander/timeline and tag -->
+    <color name="all_background_alt_dark">#FF1A1A2F</color>
+    <!--    line and font alt   -->
+    <color name="all_font_alt_dark">#FF686E87</color>
+    <!--    star and hot list   -->
+    <color name="main_attention_dark">#FFF55A2A</color>
+    <color name="all_button_dark">#FF643EFA</color>
+    <color name="all_font_button_dark">#FFFBFBFB</color>
+    <!--    list item, voted, selected tab  -->
+    <color name="all_button_alt_dark">#FF7E5DFF</color>
+
+    <!--    colors for light pku    -->
+    <color name="all_background_light_pku">#FFF4F2F0</color>
+    <color name="all_card_background_light_pku">#FFFEFEFE</color>
+    <color name="all_font_light_pku">#FF222021</color>
+    <!--    wander/timeline and tag -->
+    <color name="all_background_alt_light_pku">#FFAFADAC</color>
+    <!--    line and font alt   -->
+    <color name="all_font_alt_light_pku">#FF6F6A6B</color>
+    <!--    star and hot list   -->
+    <color name="main_attention_light_pku">#FFF55A2A</color>
+    <color name="all_button_light_pku">#FFDE453B</color>
+    <color name="all_font_button_light_pku">#FFFBFBFB</color>
+    <!--    list item, voted, selected tab  -->
+    <color name="all_button_alt_light_pku">#FFAE3931</color>
+
+    <!--    colors for light thu    -->
+    <color name="all_background_light_thu">#FFEAE8FE</color>
+    <color name="all_card_background_light_thu">#FFFFFFFF</color>
+    <color name="all_font_light_thu">#FF141D66</color>
+    <!--    wander/timeline and tag -->
+    <color name="all_background_alt_light_thu">#FFB4B0D8</color>
+    <!--    line and font alt   -->
+    <color name="all_font_alt_light_thu">#FF686E87</color>
+    <!--    star and hot list   -->
+    <color name="main_attention_light_thu">#FFF55A2A</color>
+    <color name="all_button_light_thu">#FF7200FF</color>
+    <color name="all_font_button_light_thu">#FFFBFBFB</color>
+    <!--    list item, voted, selected tab  -->
+    <color name="all_button_alt_light_thu">#FF5E42D3</color>
+
+    <!--    colors for light other    -->
+    <color name="all_background_light_other">#FFF3F7FA</color>
+    <color name="all_card_background_light_other">#FFFEFEFE</color>
+    <color name="all_font_light_other">#FF081E1C</color>
+    <!--    wander/timeline and tag -->
+    <color name="all_background_alt_light_other">#FFB9CFCC</color>
+    <!--    line and font alt   -->
+    <color name="all_font_alt_light_other">#FF7B8D8A</color>
+    <!--    star and hot list   -->
+    <color name="main_attention_light_other">#FFF55A2A</color>
+    <color name="all_button_light_other">#FF1B7A74</color>
+    <color name="all_font_button_light_other">#FFFBFBFB</color>
+    <!--    list item, voted, selected tab  -->
+    <color name="all_button_alt_light_other">#FF185F56</color>
+
+</resources>

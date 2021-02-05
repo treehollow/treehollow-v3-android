@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?color_all_font_alt</item>
+        <item name="android:layout_marginStart">35dp</item>
+        <item name="android:layout_marginTop">11dp</item>
+        <item name="android:layout_marginEnd">0dp</item>
+    </style>
+
+    <style name="Settings">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="mTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">14dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textColor">?color_all_font</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Divider2">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#B4B0D8</item>
+        <item name="android:layout_marginStart">0dp</item>
+        <item name="android:layout_marginTop">11dp</item>
+        <item name="android:layout_marginEnd">0dp</item>
+    </style>
+
+    <style name="VerticalDivider">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#B4B0D8</item>
+    </style>
+
+    <style name="Appbar">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="TextInputOutlinesStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">?color_all_font</item>
+        <item name="hintTextColor">?color_all_font</item>
+        <item name="android:theme">@style/MyCursor</item>
+    </style>
+
+    <style name="TextInputOutlineDropDownStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">?color_all_font</item>
+        <item name="hintTextColor">?color_all_font</item>
+        <item name="android:theme">@style/MyCursor</item>
+        <item name="colorSurface">?color_all_card_background</item>
+    </style>
+
+    <style name="TextInputEditTextStyle">
+        <item name="colorPrimary">?color_all_font</item>
+    </style>
+
+    <style name="MyCursor" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="colorControlActivated">?color_all_font</item>
+    </style>
+</resources>

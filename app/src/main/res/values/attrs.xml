@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    colors attrs    -->
+    <attr name="color_all_background" format="color" />
+    <attr name="color_all_card_background" format="color" />
+    <attr name="color_all_font" format="color" />
+    <!--    wander/timeline and tag -->
+    <attr name="color_all_background_alt" format="color" />
+    <!--    line and font alt   -->
+    <attr name="color_all_font_alt" format="color" />
+    <!--    star and hot list   -->
+    <attr name="color_main_attention" format="color" />
+    <attr name="color_all_button" format="color" />
+    <!--    list item, voted, selected tab  -->
+    <attr name="color_all_button_alt" format="color" />
+    <attr name="color_all_font_button" format="color" />
+
+    <attr name="reference_mipmap_bottom_send" format="reference" />
+
+</resources>

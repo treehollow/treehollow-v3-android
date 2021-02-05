@@ -1,0 +1,55 @@
+<resources>
+
+    <style name="Theme.TreeHollow.dark" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="color_all_background">@color/all_background_dark</item>
+        <item name="color_all_card_background">@color/all_card_background_dark</item>
+        <item name="color_all_font">@color/all_font_dark</item>
+        <item name="color_all_background_alt">@color/all_background_alt_dark</item>
+        <item name="color_all_font_alt">@color/all_font_alt_dark</item>
+        <item name="color_main_attention">@color/main_attention_dark</item>
+        <item name="color_all_button">@color/all_button_dark</item>
+        <item name="color_all_button_alt">@color/all_button_alt_dark</item>
+        <item name="color_all_font_button">@color/all_font_button_dark</item>
+        <item name="reference_mipmap_bottom_send">@mipmap/bottom_send_dark</item>
+    </style>
+
+    <style name="Theme.TreeHollow.light.pku" parent="Theme.TreeHollow.dark">
+        <item name="color_all_background">@color/all_background_light_pku</item>
+        <item name="color_all_card_background">@color/all_card_background_light_pku</item>
+        <item name="color_all_font">@color/all_font_light_pku</item>
+        <item name="color_all_background_alt">@color/all_background_alt_light_pku</item>
+        <item name="color_all_font_alt">@color/all_font_alt_light_pku</item>
+        <item name="color_main_attention">@color/main_attention_light_pku</item>
+        <item name="color_all_button_alt">@color/all_button_light_pku</item>
+        <item name="color_all_button">@color/all_button_alt_light_pku</item>
+        <item name="color_all_font_button">@color/all_font_button_light_pku</item>
+        <item name="reference_mipmap_bottom_send">@mipmap/bottom_send_light_pku</item>
+    </style>
+
+    <style name="Theme.TreeHollow.light.thu" parent="Theme.TreeHollow.dark">
+        <item name="color_all_background">@color/all_background_light_thu</item>
+        <item name="color_all_card_background">@color/all_card_background_light_thu</item>
+        <item name="color_all_font">@color/all_font_light_thu</item>
+        <item name="color_all_background_alt">@color/all_background_alt_light_thu</item>
+        <item name="color_all_font_alt">@color/all_font_alt_light_thu</item>
+        <item name="color_main_attention">@color/main_attention_light_thu</item>
+        <item name="color_all_button_alt">@color/all_button_light_thu</item>
+        <item name="color_all_button">@color/all_button_alt_light_thu</item>
+        <item name="color_all_font_button">@color/all_font_button_light_thu</item>
+        <item name="reference_mipmap_bottom_send">@mipmap/bottom_send_light_thu</item>
+    </style>
+
+    <style name="Theme.TreeHollow.light.other" parent="Theme.TreeHollow.dark">
+        <item name="color_all_background">@color/all_background_light_other</item>
+        <item name="color_all_card_background">@color/all_card_background_light_other</item>
+        <item name="color_all_font">@color/all_font_light_other</item>
+        <item name="color_all_background_alt">@color/all_background_alt_light_other</item>
+        <item name="color_all_font_alt">@color/all_font_alt_light_other</item>
+        <item name="color_main_attention">@color/main_attention_light_other</item>
+        <item name="color_all_button_alt">@color/all_button_light_other</item>
+        <item name="color_all_button">@color/all_button_alt_light_other</item>
+        <item name="color_all_font_button">@color/all_font_button_light_other</item>
+        <item name="reference_mipmap_bottom_send">@mipmap/bottom_send_light_other</item>
+    </style>
+
+</resources>

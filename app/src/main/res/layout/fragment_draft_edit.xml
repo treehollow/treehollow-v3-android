@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.sendpost.DraftViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?color_all_card_background"
+        android:orientation="vertical">
+
+        <!--Text draft-->
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/draft_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="5dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="说点什么"
+            android:minHeight="80dp"
+            android:text="@={vm.draftText}"
+            android:textColor="?color_all_font"
+            android:textColorHint="?color_all_font_alt"
+            android:textSize="16sp" />
+
+        <!--Vote draft-->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/draft_vote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?color_all_card_background"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/draft_vote_option1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.9"
+                    android:hint="请输入选项内容"
+                    android:onClick="@{_ -> vm.expandVoteCancelOrConfirm()}"
+                    android:text="@={vm.voteOptions[0]}"
+                    android:textColor="?color_all_font"
+                    android:textColorHint="?color_all_font_alt"
+                    android:textSize="14sp"
+                    android:visibility="@{( vm.voteOptions.size() &gt; 0) ? View.VISIBLE : View.GONE}" />
+
+                <ImageButton
+                    android:id="@+id/draft_vote_button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:backgroundTint="?color_all_button"
+                    android:onClick="@{_ -> vm.clearOrRemoveVoteOption(0)}"
+                    android:src="@drawable/ic_delete_option"
+                    android:visibility="@{(vm.voteEditing &amp;&amp;  vm.voteOptions.size() &gt; 2) ? View.VISIBLE : View.GONE}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/draft_vote_option2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.9"
+                    android:hint="请输入选项内容"
+                    android:onClick="@{_ -> vm.expandVoteCancelOrConfirm()}"
+                    android:text="@={vm.voteOptions[1]}"
+                    android:textColor="?color_all_font"
+                    android:textColorHint="?color_all_font_alt"
+                    android:textSize="14sp"
+                    android:visibility="@{( vm.voteOptions.size() &gt; 1) ? View.VISIBLE : View.GONE}" />
+
+
+                <ImageButton
+                    android:id="@+id/draft_vote_button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:backgroundTint="?color_all_button"
+                    android:onClick="@{_ -> vm.clearOrRemoveVoteOption(1)}"
+                    android:src="@drawable/ic_delete_option"
+                    android:visibility="@{(vm.voteEditing &amp;&amp;  vm.voteOptions.size() &gt; 2) ? View.VISIBLE : View.GONE}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/draft_vote_option3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.9"
+                    android:hint="请输入选项内容"
+                    android:onClick="@{_ -> vm.expandVoteCancelOrConfirm()}"
+                    android:text="@={vm.voteOptions[2]}"
+                    android:textColor="?color_all_font"
+                    android:textColorHint="?color_all_font_alt"
+                    android:textSize="14sp"
+                    android:visibility="@{( vm.voteOptions.size() &gt; 2) ? View.VISIBLE : View.GONE}" />
+
+
+                <ImageButton
+                    android:id="@+id/draft_vote_button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:backgroundTint="?color_all_button"
+                    android:onClick="@{_ -> vm.clearOrRemoveVoteOption(2)}"
+                    android:src="@drawable/ic_delete_option"
+                    android:visibility="@{(vm.voteEditing &amp;&amp;  vm.voteOptions.size() &gt; 2) ? View.VISIBLE : View.GONE}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/draft_vote_option4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.9"
+                    android:hint="请输入选项内容"
+                    android:onClick="@{_ -> vm.expandVoteCancelOrConfirm()}"
+                    android:text="@={vm.voteOptions[3]}"
+                    android:textColor="?color_all_font"
+                    android:textColorHint="?color_all_font_alt"
+                    android:textSize="14sp"
+                    android:visibility="@{( vm.voteOptions.size() &gt; 3) ? View.VISIBLE : View.GONE}" />
+
+
+                <ImageButton
+                    android:id="@+id/draft_vote_button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:backgroundTint="?color_all_button"
+                    android:onClick="@{_ -> vm.clearOrRemoveVoteOption(3)}"
+                    android:src="@drawable/ic_delete_option"
+                    android:visibility="@{(vm.voteEditing &amp;&amp;  vm.voteOptions.size() &gt; 3) ? View.VISIBLE : View.GONE}" />
+            </LinearLayout>
+
+
+            <ImageButton
+                android:id="@+id/draft_vote_add_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="5dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="Add option"
+                android:onClick="@{_->vm.appendVoteOption()}"
+                android:src="@drawable/ic_more"
+                android:visibility="@{(vm.voteEditing &amp;&amp; vm.voteOptions.size() &lt; 4) ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toBottomOf="@id/draft_vote_option4" />
+
+            <LinearLayout
+                android:id="@+id/draft_vote_cancel_or_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal"
+                android:padding="0dp"
+                android:visibility="@{(!vm.voteEditing) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/draft_vote_add_option">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="?color_all_button"
+                    android:onClick="@{_ -> vm.disableVote()}"
+                    android:text="取消"
+                    android:textColor="?color_all_font_button" />
+
+                <View style="@style/VerticalDivider" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="?color_all_button"
+                    android:onClick="@{_ -> vm.collapseVoteCancelOrConfirm()}"
+                    android:text="确定"
+                    android:textColor="?color_all_font_button" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--Image draft-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="?color_all_background"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/draft_image_wrapper">
+
+            <ImageView
+                android:id="@+id/draft_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/draft_remove_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/draft_image"
+                android:src="@drawable/ic_delete"
+                android:visibility="gone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--Tag draft-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="?color_all_card_background"
+            android:orientation="horizontal"
+            android:textColor="?color_all_font_button">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:text="@string/tag_"
+                android:textColor="?color_all_font"
+                android:textSize="16sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textAlignment="center"
+                android:textColor="?color_all_font_button"
+                app:cardCornerRadius="8pt">
+
+                <Spinner
+                    android:id="@+id/draft_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?color_all_button"
+                    android:gravity="center"
+                    android:popupBackground="?color_all_card_background"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="center" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

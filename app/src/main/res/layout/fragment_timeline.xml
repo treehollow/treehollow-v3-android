@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?color_all_background"
+
+        tools:context=".ui.mainscreen.timeline.TimelineFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tmp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/timeline_recycle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:orientation="vertical"
+                        android:paddingTop="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:background="?color_all_background">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/top_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="36px"
+                            android:layout_marginVertical="36px"
+                            android:backgroundTint="?color_all_card_background"
+                            android:clickable="true"
+                            android:clipChildren="false"
+                            android:descendantFocusability="blocksDescendants"
+                            android:focusable="true"
+                            app:cardCornerRadius="10dp"
+                            tools:ignore="PxUsage">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|end"
+                                android:orientation="horizontal">
+
+                                <ImageButton
+                                    android:id="@+id/search_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/transparent"
+                                    android:src="@drawable/ic_search"
+                                    tools:ignore="ContentDescription" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/search_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:textColorHint="?color_all_font_alt"
+                                    android:textColor="?color_all_font"
+                                    android:hint="@string/search" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:orientation="vertical"
+            app:layout_dodgeInsetEdges="bottom">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="?color_all_background"
+                android:src="@drawable/ic_refresh"
+                app:borderWidth="0dp"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/bottom_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="?reference_mipmap_bottom_send"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

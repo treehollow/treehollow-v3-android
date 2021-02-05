@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.messages.MessageViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="8dp"
+        android:orientation="vertical"
+        android:background="?color_all_background">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/message_list_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

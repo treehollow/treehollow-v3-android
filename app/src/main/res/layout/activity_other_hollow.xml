@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.login.OtherHollowViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?color_all_background"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.ActionMenuView
+            android:id="@+id/actionMenuView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="?color_all_background"
+                android:src="@drawable/ic_back" />
+        </androidx.appcompat.widget.ActionMenuView>
+
+        <!--        TODO: forget password?-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?color_all_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/config_text_field"
+                style="@style/TextInputOutlinesStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="?color_all_font_alt"
+                app:gone="@{vm.loading}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?color_all_card_background"
+                    android:hint="@string/input_config_url"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="?color_all_font"
+                    android:textColorHint="?color_all_font" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/forget_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingVertical="10dp"
+                android:singleLine="false"
+                android:textColor="?color_all_font_alt"
+                app:gone="@{vm.loading}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                android:background="?color_all_background"
+                android:gravity="center"
+                android:orientation="vertical">
+                <!--Nothing here, just a place holder.-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:background="?color_all_background"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_continue"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="50sp"
+                    android:backgroundTint="?color_all_button"
+                    android:text="@string/next"
+                    android:textColor="?color_all_font_button"
+                    android:textSize="16sp"
+                    app:cornerRadius="4dp"
+                    app:gone="@{vm.loading}" />
+
+                <ProgressBar
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:background="#00000000"
+                    android:indeterminateTint="?color_all_button_alt"
+                    app:gone="@{!vm.loading}" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

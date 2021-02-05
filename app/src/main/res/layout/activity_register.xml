@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.login.RegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?color_all_background"
+        tools:context=".ui.login.CheckEmailActivity">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/valid_code_text_field"
+            style="@style/TextInputOutlinesStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:padding="20sp"
+            android:textColorHint="?color_all_font_alt"
+            app:gone="@{vm.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/valid_code"
+                android:inputType="none"
+                android:singleLine="true"
+                android:textColor="?color_all_font"
+                android:textColorHint="?color_all_font_alt" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_password_text_field"
+            style="@style/TextInputOutlinesStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:padding="20sp"
+            android:textColorHint="?color_all_font_alt"
+            app:gone="@{vm.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/valid_code_text_field">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="?color_all_font"
+                android:textColorHint="?color_all_font_alt" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_confirm_password_text_field"
+            style="@style/TextInputOutlinesStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:padding="20sp"
+            android:textColorHint="?color_all_font_alt"
+            app:gone="@{vm.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_password_text_field">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="?color_all_font"
+                android:textColorHint="?color_all_font_alt" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/register_agree_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:buttonTint="?color_all_font"
+            android:enabled="true"
+            android:paddingStart="20sp"
+            android:paddingEnd="20sp"
+            android:text="@string/agree"
+            android:textColor="?color_all_font"
+            android:textSize="16sp"
+            app:gone="@{vm.loading}"
+            app:layout_constraintTop_toBottomOf="@+id/register_confirm_password_text_field" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/register_prompt_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:enabled="false"
+            android:padding="20sp"
+            android:text="@string/password_info"
+            android:textColor="?color_all_font_alt"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:gone="@{vm.loading}"
+            app:layout_constraintTop_toBottomOf="@+id/register_agree_checkbox" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_register_continue"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="124dp"
+            android:backgroundTint="?color_all_button"
+            android:text="@string/next"
+            android:textColor="?color_all_font_button"
+            android:textSize="16sp"
+            app:cornerRadius="4dp"
+            app:gone="@{vm.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_prompt_text" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:background="#00000000"
+            android:indeterminateTint="?color_all_button_alt"
+            app:gone="@{!vm.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="account_info">账号信息</string>
+    <string name="notifications">新消息通知</string>
+    <string name="sys_noti">接收系统消息</string>
+    <string name="watch_noti">接收我关注树洞的新消息</string>
+    <string name="reply_noti">接收回复我的新消息</string>
+    <string name="settings">设置</string>
+    <string name="rules">树洞规范</string>
+    <string name="contact_us">联系我们</string>
+    <string name="about">关于树洞</string>
+    <string name="privacy">隐私政策</string>
+    <string name="update_check">检查更新</string>
+    <string name="logout">注销账号</string>
+    <string name="dark_theme">夜间模式</string>
+    <string name="dark_theme_summary">选择深色或浅色模式</string>
+    <string name="easter_egg">允许彩蛋</string>
+    <string name="easter_egg_summary">在某些情况下显示彩蛋</string>
+    <string name="fold_hollow">折叠树洞</string>
+    <string name="fold_hollow_summary">在时间轴中折叠可能引起不适的树洞</string>
+    <string name="block_words">设置屏蔽词</string>
+    <string name="block_words_summary">包含屏蔽词的树洞会被折叠</string>
+    <string name="logging_device">管理已登录设备</string>
+    <string name="logging_device_summary">查看设备信息</string>
+    <string name="input_block_word">输入屏蔽词</string>
+    <string name="add_block_word">+ 添加一个选项</string>
+    <string name="device_model">设备型号： </string>
+    <string name="device_system">设备系统： </string>
+    <string name="device_login_date">登录时间： </string>
+    <string name="device_login_location">登录地点： </string>
+    <string name="quit">登出</string>
+    <string name="tos">服务协议</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.login.RecaptchaViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.RecaptchaActivity">
+
+        <WebView
+            android:id="@+id/recaptcha_web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <ProgressBar
+            android:id="@+id/progress_web_view"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:background="#00000000"
+            android:indeterminateTint="?color_all_button_alt"
+            app:gone="@{!vm.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

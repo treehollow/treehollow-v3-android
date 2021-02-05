@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?color_all_background">
+
+        <ProgressBar
+            android:id="@+id/bottom_loading"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:backgroundTint="?color_all_button"
+            android:indeterminateTint="?color_all_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/network_error"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="?color_all_button"
+            android:text="@string/network_error_please_retry"
+            android:textAllCaps="false"
+            android:textColor="?color_all_font_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/load_more"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="?color_all_button_alt"
+            android:text="@string/press_more"
+            android:textAllCaps="false"
+            android:textColor="?color_all_font_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/no_more"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="?color_all_button_alt"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="@string/no_more"
+            android:textAllCaps="false"
+            android:textColor="?color_all_font_button" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

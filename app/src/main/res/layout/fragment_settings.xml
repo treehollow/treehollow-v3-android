@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.settings.SettingsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?color_all_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/notifications"
+            style="@style/Settings">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/notification_title"
+                style="@style/mTextViewStyle"
+                android:layout_width="wrap_content"
+                android:text="@string/notifications"
+                android:textColor="?color_all_font"
+                app:autoSizeTextType="uniform"
+                app:drawableStartCompat="@drawable/ic_notification_25" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/push_system_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:checked="@{vm.pushSystemMsg}"
+                android:clickable="false"
+                android:enabled="@{vm.showNotification}"
+                android:paddingStart="35dp"
+                android:switchMinWidth="44dp"
+                android:text="@string/sys_noti"
+                android:textColor="?color_all_font_alt"
+                android:thumb="@drawable/layout_switch_thumb"
+                app:track="@drawable/layout_switch_track" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/push_favorited"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:checked="@{vm.pushFavorited}"
+                android:clickable="false"
+                android:enabled="@{vm.showNotification}"
+                android:paddingStart="35dp"
+                android:switchMinWidth="44dp"
+                android:text="@string/watch_noti"
+                android:textColor="?color_all_font_alt"
+                android:thumb="@drawable/layout_switch_thumb"
+                app:track="@drawable/layout_switch_track" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/push_reply_me"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:checked="@{vm.pushReplyMe}"
+                android:clickable="false"
+                android:enabled="@{vm.showNotification}"
+                android:paddingStart="35dp"
+                android:switchMinWidth="44dp"
+                android:text="@string/reply_noti"
+                android:textColor="?color_all_font_alt"
+                android:thumb="@drawable/layout_switch_thumb"
+                app:track="@drawable/layout_switch_track" />
+
+            <View style="@style/Divider" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/preferences"
+            style="@style/Settings">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/mTextViewStyle"
+                android:layout_width="wrap_content"
+                android:text="@string/settings"
+                android:textColor="?color_all_font"
+                app:autoSizeTextType="uniform"
+                app:drawableStartCompat="@drawable/ic_settings" />
+
+            <View style="@style/Divider" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contact_us"
+            style="@style/Settings">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/contact_us_title"
+                    style="@style/mTextViewStyle"
+                    android:layout_weight="1"
+                    android:text="@string/contact_us"
+                    app:drawableStartCompat="@drawable/ic_contact" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/contact_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="end"
+                    android:text="@{vm.contactEmail}"
+                    android:textColor="?color_main_attention"
+                    app:autoSizeTextType="uniform" />
+            </LinearLayout>
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rules"
+            style="@style/Settings">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/mTextViewStyle"
+                android:layout_width="wrap_content"
+                android:text="@string/rules"
+                android:textColor="?color_all_font"
+                app:autoSizeTextType="uniform"
+                app:drawableStartCompat="@drawable/ic_usercode" />
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tos"
+            style="@style/Settings">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/mTextViewStyle"
+                android:text="@string/tos"
+                android:textColor="?color_all_font"
+                app:autoSizeTextType="uniform"
+                app:drawableStartCompat="@drawable/ic_info" />
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/privacy"
+            style="@style/Settings">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/mTextViewStyle"
+                android:text="@string/privacy"
+                android:textColor="?color_all_font"
+                app:autoSizeTextType="uniform"
+                app:drawableStartCompat="@drawable/ic_privacy" />
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/update"-->
+        <!--            style="@style/Settings">-->
+
+        <!--            <com.google.android.material.textview.MaterialTextView-->
+        <!--                style="@style/mTextViewStyle"-->
+        <!--                android:text="@string/update_check"-->
+        <!--                android:textColor="?color_all_font"-->
+        <!--                app:autoSizeTextType="uniform"-->
+        <!--                app:drawableStartCompat="@drawable/ic_update" />-->
+
+        <!--            <View style="@style/Divider" />-->
+        <!--        </LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/change_pw"
+            style="@style/Settings">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/mTextViewStyle"
+                android:text="@string/change_password"
+                android:textColor="?color_all_font"
+                app:autoSizeTextType="uniform"
+                app:drawableStartCompat="@drawable/ic_update" />
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/logout"
+            style="@style/Settings">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/mTextViewStyle"
+                android:text="@string/logout"
+                android:textColor="?color_all_font"
+                app:autoSizeTextType="uniform"
+                app:drawableStartCompat="@drawable/ic_logout" />
+
+            <View style="@style/Divider" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

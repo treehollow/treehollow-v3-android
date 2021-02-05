@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="reply"
+            type="com.github.treehollow.data.ReplyState" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/expanded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="2dp"
+        android:background="?color_all_card_background"
+        android:baselineAligned="false"
+        android:clipChildren="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.1"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+            <!--Avatar-->
+            <ImageView
+                android:id="@+id/comment_avatar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="3dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="0.9"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <!--Header-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--Comment name-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/comment_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="10dp"
+                        android:text="@{reply.comment_data.name}"
+                        android:textColor="?color_all_font"
+                        android:textSize="16sp"
+                        android:transitionName="id" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/reply_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="10dp"
+                        android:text="@{reply.accurateTimeString()}"
+                        android:textColor="?color_all_font_alt"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/comment_menu"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="4dp"-->
+                <!--                    android:paddingHorizontal="6dp"-->
+                <!--                    android:paddingVertical="6dp"-->
+                <!--                    android:src="@drawable/ic_more"-->
+                <!--                    tools:ignore="ContentDescription" />-->
+
+            </LinearLayout>
+
+            <!--Tag-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/reply_tag_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="6dp"
+                android:backgroundTint="?color_all_button"
+                android:clickable="true"
+                android:clipChildren="false"
+                android:focusable="true"
+                app:cardCornerRadius="10dp">
+
+                <TextView
+                    android:id="@+id/reply_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="2dp"
+                    android:backgroundTint="?color_all_background"
+                    android:textColor="?color_all_font_button"
+                    android:textSize="14sp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/post_deleted_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="6dp"
+                android:backgroundTint="#FFFF0000"
+                android:clickable="true"
+                android:clipChildren="false"
+                android:focusable="true"
+                android:visibility="gone"
+                app:cardCornerRadius="10dp"
+                app:gone="@{!reply.comment_data.deleted}">
+
+                <TextView
+                    android:id="@+id/post_deleted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="2dp"
+                    android:backgroundTint="?color_all_background"
+                    android:text="@string/deleted"
+                    android:textColor="?color_all_font_button"
+                    android:textSize="14sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Text-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/post_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:ellipsize="end"
+                android:maxLines="255"
+                android:paddingHorizontal="10dp"
+                android:paddingBottom="4dp"
+                android:singleLine="false"
+                android:text="@{reply.comment_data.text}"
+                android:textColor="?color_all_font"
+                android:transitionName="content" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/redirects_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="6dp"
+                android:backgroundTint="?color_all_button"
+                android:clickable="true"
+                android:clipChildren="false"
+                android:focusable="true"
+                android:visibility="gone"
+                app:cardCornerRadius="4dp"
+                app:gone="@{reply.redirects.empty}">
+
+                <TextView
+                    android:id="@+id/redirects_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="2dp"
+                    android:backgroundTint="?color_all_background"
+                    android:text="@string/redirect_to"
+                    android:textColor="?color_all_font_button"
+                    android:textSize="14sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Image-->
+            <ImageView
+                android:id="@+id/comment_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="6dp"
+                android:adjustViewBounds="true"
+                android:maxHeight="200dp"
+                app:gone="@{!reply.hasImage()}"
+                tools:ignore="ContentDescription" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?color_all_font_alt" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

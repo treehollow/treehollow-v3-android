@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.github.treehollow.ui.search.SearchViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?color_all_background"
+        android:orientation="vertical"
+        tools:context=".ui.search.SearchActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?color_all_background"
+            tools:context=".ui.search.SearchActivity">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?color_all_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/ic_back">
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:padding="0dp"
+                app:cardBackgroundColor="?color_all_button"
+                app:cardCornerRadius="4dp"
+                app:layout_constraintBottom_toBottomOf="@id/toolbar"
+                app:layout_constraintEnd_toEndOf="@id/toolbar"
+                app:layout_constraintTop_toTopOf="@id/toolbar">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/search_button"
+                    android:layout_width="57dp"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="0dp"
+                    android:backgroundTint="?color_all_button"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:padding="0dp"
+                    android:text="@string/search"
+                    android:textColor="?color_all_font_button"
+                    android:textSize="14sp" />
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:padding="0dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/ic_search"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/search_keywords_text_field"
+                style="@style/TextInputOutlinesStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:padding="5sp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/search_keywords_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/search_hint"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="?color_all_font"
+                    android:textColorHint="?color_all_font_alt" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:orientation="horizontal"
+            android:padding="0dp">
+
+            <TextView
+                android:id="@+id/advanced_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginVertical="0dp"
+                android:backgroundTint="?color_all_background"
+                android:padding="6dp"
+                android:text="高级搜索"
+                android:textColor="?color_all_font"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:gone="@{vm.searching}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="25pt"
+            app:gone="@{vm.advanceSearchDisplay}">
+
+            <TextView
+                android:id="@+id/textView_by_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="按时间搜索"
+                android:textColor="?color_all_font"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:padding="0dp">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="?color_all_card_background"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:onClick="dateDialogFunc"
+                    android:text="起始日期"
+                    android:textColor="?color_all_font_alt" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="?color_all_card_background"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:onClick="dateDialogFunc"
+                    android:text="截止日期"
+                    android:textColor="?color_all_font_alt" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView_search_range"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:text="搜索范围"
+                android:textColor="?color_all_font"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="vertical">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/button_post_only"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="6dp"
+                    app:cardCornerRadius="5dp"
+                    tools:ignore="RtlSymmetry">
+
+                    <LinearLayout
+                        android:id="@+id/post_only_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?color_all_card_background"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/post_only_text_0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="start"
+                            android:text="局部搜索"
+                            android:textColor="?color_all_font_alt" />
+
+                        <TextView
+                            android:id="@+id/post_only_text_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="仅搜索树洞"
+                            android:textColor="?color_all_font_alt" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/button_include_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal"
+                    app:cardCornerRadius="5dp">
+
+                    <LinearLayout
+                        android:id="@+id/include_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?color_all_card_background"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/include_text_0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="start"
+                            android:text="全局搜索"
+                            android:textColor="?color_all_font_alt" />
+
+                        <TextView
+                            android:id="@+id/include_text_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="搜索树洞+评论"
+                            android:textColor="?color_all_font_alt" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
