@@ -324,7 +324,7 @@
                         android:padding="8dp"
                         android:text="@{post.moreCommentsText}"
                         android:textColor="?color_all_font"
-                        app:gone="@{!post.hasMoreComments()}" />
+                        app:gone="@{!post.showHasMoreComments()}" />
 
                     <!--Random Bottom-->
                     <LinearLayout

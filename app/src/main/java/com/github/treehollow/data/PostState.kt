@@ -99,10 +99,11 @@ data class PostState constructor(
     // image comment vote
     fun hasImage(): Boolean = post_data.url.isNotEmpty()
     fun hasNoComments(): Boolean = comments.isNullOrEmpty()
-    fun hasMoreComments(): Boolean {
-        if ((comments != null && post_data.reply > comments!!.size) || (comments == null && post_data.reply > 0)) {
+    fun showHasMoreComments(): Boolean {
+        if (environment == RandomListEnv)
+            return false
+        else if ((comments != null && post_data.reply > comments!!.size) || (comments == null && post_data.reply > 0))
             return true
-        }
         return false
     }
 
