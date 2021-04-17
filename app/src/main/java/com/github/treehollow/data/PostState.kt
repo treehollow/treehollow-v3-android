@@ -100,7 +100,7 @@ data class PostState constructor(
     fun hasImage(): Boolean = post_data.url.isNotEmpty()
     fun hasNoComments(): Boolean = comments.isNullOrEmpty()
     fun hasMoreComments(): Boolean {
-        if (comments != null && post_data.reply > comments!!.size) {
+        if ((comments != null && post_data.reply > comments!!.size) || (comments == null && post_data.reply > 0)) {
             return true
         }
         return false
@@ -109,7 +109,7 @@ data class PostState constructor(
     fun getMoreCommentsText() = if (comments != null) {
         "还有${post_data.reply - comments!!.size}条评论"
     } else {
-        ""
+        "还有${post_data.reply}条评论"
     }
 
     fun getTotalCommentText() = "全部回复 ${post_data.reply}条"
