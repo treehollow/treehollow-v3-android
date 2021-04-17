@@ -117,7 +117,7 @@ data class PostState constructor(
     fun getMaxLines() = if (environment == DetailPostEnv) {
         Int.MAX_VALUE
     } else {
-        30
+        10
     }
 
 }
