@@ -126,7 +126,6 @@ data class PostState constructor(
 open class ListElem : Serializable
 open class PostListElem : ListElem()
 object PostListBottom : PostListElem()
-object PostListTop : PostListElem()
 
 abstract class PostFetcher : Fetcher() {
     abstract suspend fun fetchList(page: Int): List<PostState>
