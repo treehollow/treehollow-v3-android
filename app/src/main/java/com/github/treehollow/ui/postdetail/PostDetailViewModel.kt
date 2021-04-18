@@ -26,7 +26,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 class PostDetailViewModel(
     var pid: Int,
     var adapter: ReplyCardAdapter,
-    var needRefresh: Boolean
+    needRefresh: Boolean
 ) : ViewModel() {
 
     companion object {

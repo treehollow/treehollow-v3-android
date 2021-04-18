@@ -13,6 +13,6 @@ interface CommentDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveLocalComment(item: LocalComment)
 
-    @Query("SELECT * FROM LocalComment WHERE pid > :pid")
+    @Query("SELECT * FROM LocalComment WHERE pid = :pid")
     suspend fun getCommentCache(pid: Int): LocalComment?
 }
