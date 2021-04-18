@@ -130,7 +130,7 @@ class SettingsViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     val body = response.body()
                     if (body != null) {
-                        if (body.code < 0) {
+                        if (body.code < 0 && body.code != -100) {
                             throw Exception(body.msg)
                         }
                         TreeHollowApplication.deleteToken()
