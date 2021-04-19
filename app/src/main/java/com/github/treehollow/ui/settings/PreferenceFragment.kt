@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.github.treehollow.R
 import com.github.treehollow.base.DataBindingFragment
 import com.github.treehollow.base.TreeHollowApplication
@@ -18,6 +19,7 @@ import com.github.treehollow.data.model.defaultBooleanPrefs
 import com.github.treehollow.databinding.FragmentPreferencesBinding
 import com.github.treehollow.repository.PreferencesRepository
 import com.github.treehollow.utils.Const
+import kotlinx.coroutines.launch
 
 
 class PreferenceFragment : DataBindingFragment() {
@@ -90,6 +92,12 @@ class PreferenceFragment : DataBindingFragment() {
         }
         binding.loggingDevice.setOnClickListener {
             fragmentContext.replaceFragment(DevicesListFragment())
+        }
+        binding.clearCache.setOnClickListener {
+            lifecycleScope.launch {
+                TreeHollowApplication.dbInstance.commentDao().deleteAll()
+                Toast.makeText(fragmentContext, "清除评论缓存成功", Toast.LENGTH_SHORT).show()
+            }
         }
         blockWordAdapter = BlockWordAdapter(activity as Context, blockList)
 //        binding.blockWordsList.itemsCanFocus = true

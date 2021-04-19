@@ -77,9 +77,9 @@ data class PostState constructor(
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
 //        Log.d("PostState", "current year: $currentYear")
         return if (currentYear == postCalendar.get(Calendar.YEAR)) {
-            SimpleDateFormat("MM-dd hh:mm:ss", Locale.getDefault()).format(Date(timestamp))
+            SimpleDateFormat("MM-dd HH:mm:ss", Locale.getDefault()).format(Date(timestamp))
         } else {
-            SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault()).format(Date(timestamp))
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date(timestamp))
         }
     }
 

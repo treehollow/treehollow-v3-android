@@ -15,4 +15,7 @@ interface CommentDao {
 
     @Query("SELECT * FROM LocalComment WHERE pid = :pid")
     suspend fun getCommentCache(pid: Int): LocalComment?
+
+    @Query("DELETE FROM LocalComment")
+    suspend fun deleteAll()
 }

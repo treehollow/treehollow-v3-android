@@ -593,16 +593,43 @@ class PostDetailFragment : Fragment() {
             }
         }
         if (permissions.contains("delete_ban")) {
-            items += "删帖禁言" to {
-                showInputAlertDialog(
-                    "删帖禁言$id", "删除并禁言。删除理由会通知用户。"
-                ) { str ->
-                    model.doReport(
-                        "delete_ban",
-                        id,
-                        str, isPost
-                    )
+            val reasons = listOf(
+                "洞规5.2 人身攻击",
+                "洞规5.2 不当概化",
+                "洞规5.8 禁止约炮",
+                "洞规5.8.3",
+                "洞规5.9",
+                "洞规6.4 政治相关无tag",
+                "洞规6.4 性相关无tag",
+                "洞规6.5"
+            )
+
+            items += "管理员删帖禁言" to {
+
+                val items2: MutableList<Pair<String, () -> Unit>> = reasons.map { str ->
+                    str to {
+                        model.doReport(
+                            "delete_ban",
+                            id,
+                            str, isPost
+                        )
+                        Unit
+                    }
+                }.toMutableList()
+
+
+                items2 += "其他理由" to {
+                    showInputAlertDialog(
+                        "管理员删帖禁言: $id", "删除并禁言。删除理由会通知用户。"
+                    ) { str ->
+                        model.doReport(
+                            "delete_ban",
+                            id,
+                            str, isPost
+                        )
+                    }
                 }
+                showSelectionAlertDialog("管理员删帖禁言: $id", "", items2)
             }
         }
         if (permissions.contains("unban")) {

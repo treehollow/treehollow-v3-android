@@ -53,4 +53,6 @@
     <string name="new_pw">新密码</string>
     <string name="change_password">更改密码</string>
     <string name="input_config_url">请输入树洞的配置URL</string>
+    <string name="clear_cache">清除本地树洞缓存</string>
+    <string name="detail_clear_cache">树洞显示出现滞后或错误可以试试</string>
 </resources>
