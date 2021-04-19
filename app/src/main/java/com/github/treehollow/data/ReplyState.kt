@@ -40,9 +40,9 @@ data class ReplyState(
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
 //        Log.d("PostState", "current year: $currentYear")
         if (currentYear == postCalendar.get(Calendar.YEAR)) {
-            return SimpleDateFormat("MM-dd hh:mm:ss", Locale.getDefault()).format(Date(timestamp))
+            return SimpleDateFormat("MM-dd HH:mm:ss", Locale.getDefault()).format(Date(timestamp))
         } else {
-            return SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault()).format(
+            return SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
                 Date(
                     timestamp
                 )
