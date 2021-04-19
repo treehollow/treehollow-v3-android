@@ -333,7 +333,7 @@ class PostDetailFragment : Fragment() {
         model.errorMsg.observe(viewLifecycleOwner, { event ->
             event?.getContentIfNotHandledOrReturnNull()?.let {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-                Log.e("TimelineFragment", it)
+                Log.e("PostDetailFragment", it)
             }
         })
 
