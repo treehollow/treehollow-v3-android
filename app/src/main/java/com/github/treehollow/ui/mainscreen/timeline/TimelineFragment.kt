@@ -516,10 +516,10 @@ class TimelineFragment : Fragment() {
 
     private fun updateAnnouncement() {
         val announcement =
-            TreeHollowApplication.Companion.Config.getConfigItemString("announcement")!!
+            TreeHollowApplication.Companion.Config.getConfigItemString("announcement")
         val savedAnnouncement =
             TreeHollowApplication.Companion.Config.getConfigItemString("saved_announcement")
-        if (announcement != savedAnnouncement)
+        if (announcement != savedAnnouncement && announcement != null)
             adapter.top = AnnouncementState(announcement)
     }
 
