@@ -12,6 +12,7 @@ class PostListFetcher(
 ) :
     PostFetcher() {
 
+    private var lastMinID = Int.MAX_VALUE
     override suspend fun fetchList(page: Int): List<PostState> {
 
         val userFoldable = PreferencesRepository.getBooleanPreference(
@@ -27,7 +28,9 @@ class PostListFetcher(
                 if (body.code < 0) {
                     throw Exception(body.msg)
                 }
-                return body.data!!.map {
+                val rtn = body.data!!.filter {
+                    it.pid < lastMinID
+                }.map {
                     PostState(
                         it,
                         mdBuilder.getMarkdown(it.text),
@@ -35,6 +38,8 @@ class PostListFetcher(
                         foldable = userFoldable && (it.tag?.let { it3 -> foldTags.contains(it3) } == true)
                     )
                 }
+                lastMinID = body.data[body.data.lastIndex].pid
+                return rtn
             } else {
                 throw Exception("Network response body is null")
             }

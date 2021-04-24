@@ -78,7 +78,7 @@ class MessageRecyclerViewAdapter(
     ) {
         when (holder) {
             is ViewHolder.MessageItem -> {
-                holder.setIsRecyclable(true)
+                holder.setIsRecyclable(false)
                 holder.bind(getItem(position) as MessageState)
             }
             is ViewHolder.Bottom -> Unit
@@ -98,7 +98,7 @@ class MessageRecyclerViewAdapter(
     ) {
         if (holder is ViewHolder.MessageItem)
             (payloads.singleOrNull() as? MessageState)?.let {
-                holder.setIsRecyclable(true)
+                holder.setIsRecyclable(false)
                 holder.bind(it)
             }
                 ?: super.onBindViewHolder(holder, position, payloads)

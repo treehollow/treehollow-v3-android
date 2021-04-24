@@ -99,7 +99,6 @@ class TimelineViewModel(
                     return@launch
                 val tmp = listFetcher!!.fetchList(page)
                 adapter.list.value = adapter.list.value!! + tmp
-//                TODO: remove same elements
                 for (i in tmp.indices) {
                     tmp[i].index = i + oldListSize - adapter.hasBottom
 

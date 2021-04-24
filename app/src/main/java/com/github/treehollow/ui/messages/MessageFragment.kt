@@ -31,13 +31,8 @@ class MessageFragment : Fragment() {
             }
         }
 
-        if (message?.hasQuote() == true) {
-            val tmp = message!!
-            model.fetchQuote(tmp)
-        }
-
-        messageCard.invalidate()
-        expanded.invalidate()
+//        messageCard.invalidate()
+//        expanded.invalidate()
     }, bottomInit = {
         loadMore.setOnClickListener { model.more() }
         networkError.setOnClickListener { model.more() }

@@ -10,14 +10,13 @@ import kotlin.time.ExperimentalTime
 data class MessageState constructor(
     val data: ApiResponse.PushMessage,
     var index: Int? = null,
-    var quoteId: Int? = null,
+    var quoteId: Int?,
     var quotePostState: PostState? = null,
 ) : MessageListElem(), Serializable {
 
     constructor(
         data: ApiResponse.PushMessage,
-    ) : this(data, null, data.pid, null) {
-    }
+    ) : this(data, null, data.pid, null)
 
     fun title(): String {
         return data.title!!

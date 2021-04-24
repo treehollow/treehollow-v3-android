@@ -62,6 +62,10 @@ class MessageViewModel(
 
                         for (i in tmp.indices) {
                             tmp[i].index = i
+
+                            if (tmp[i].hasQuote()) {
+                                fetchQuote(tmp[i])
+                            }
                         }
 
                         adapter.list.value = tmp
@@ -116,10 +120,14 @@ class MessageViewModel(
                             tmp.add(MessageState(ent))
                         }
 
-                        adapter.list.value = adapter.list.value!! + tmp
                         for (i in tmp.indices) {
                             tmp[i].index = i + oldListSize - adapter.hasBottom
+
+                            if (tmp[i].hasQuote()) {
+                                fetchQuote(tmp[i])
+                            }
                         }
+                        adapter.list.value = adapter.list.value!! + tmp
 
                         bottom.value =
                             if (tmp.isEmpty()) Utils.BottomStatus.NO_MORE else Utils.BottomStatus.IDLE
@@ -143,7 +151,7 @@ class MessageViewModel(
         }
     }
 
-    fun fetchQuote(message: MessageState) = viewModelScope.launch {
+    private fun fetchQuote(message: MessageState) = viewModelScope.launch {
         try {
             val resp = SimplePostDetailFetcher(token).fetchPostDetail(message.quoteId!!)
             message.index?.let {
