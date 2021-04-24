@@ -124,7 +124,7 @@ class MainScreenActivity : AppCompatActivity() {
                         val version = pInfo.versionName
                         if (Version(result.data.android_frontend_version) > Version(version)) {
                             Log.d(
-                                "TreeHollowApplication",
+                                "MainScreenActivity",
                                 "New version detected: ${result.data.android_frontend_version}, old version = $version"
                             )
                             MaterialAlertDialogBuilder(this@MainScreenActivity).apply {
