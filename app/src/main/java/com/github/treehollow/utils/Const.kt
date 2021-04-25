@@ -6,7 +6,7 @@ object Const {
             "https://cdn.jsdelivr.net/gh/treehollow/thuhole-config@master/main.txt"
 
         var pku_hollow_config_url =
-            "https://cdn.jsdelivr.net/gh/treehollow/thuhole-config@master/config.txt"
+            "https://cdn.jsdelivr.net/gh/pkuhollow/pkuhollow-config@main/config.txt"
     }
 
     const val PreferenceKey: String = "TreeHollow_preference"
