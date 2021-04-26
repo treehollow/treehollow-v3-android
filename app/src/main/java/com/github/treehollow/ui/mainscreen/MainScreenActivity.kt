@@ -169,7 +169,7 @@ class MainScreenActivity : AppCompatActivity() {
         val touchSlopField = RecyclerView::class.java.getDeclaredField("mTouchSlop")
         touchSlopField.isAccessible = true
         val touchSlop = touchSlopField.get(recyclerView) as Int
-        touchSlopField.set(recyclerView, touchSlop * 3)
+        touchSlopField.set(recyclerView, touchSlop * 6)
 
         wanderText.setOnClickListener {
             page.value = 0

@@ -136,7 +136,7 @@ class WebSocketService : Service() {
 
     private fun startPushService() {
 //        UncaughtExceptionHandler.registerCurrentThread();
-//        foreground(getString(R.string.websocket_init));
+        foreground("正在初始化树洞消息推送服务");
 //
         if (lastReceivedMessage.get() == NOT_LOADED) {
 
@@ -356,14 +356,14 @@ class WebSocketService : Service() {
         )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            showNotificationGroup()
+            showNotificationGroup(msg.pid)
         }
         b.setAutoCancel(true)
             .setDefaults(Notification.DEFAULT_ALL)
             .setWhen(System.currentTimeMillis())
             .setSmallIcon(R.mipmap.ic_launcher)
             .setTicker(getString(R.string.app_name) + " - " + msg.title)
-            .setGroup(GROUP_MESSAGES)
+            .setGroup(msg.pid.toString())
             .setContentTitle(msg.title)
             .setContentText(msg.body)
             .setStyle(NotificationCompat.BigTextStyle().bigText(msg.body))
@@ -377,7 +377,7 @@ class WebSocketService : Service() {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun showNotificationGroup() {
+    fun showNotificationGroup(pid: Int?) {
         val intent = Intent(this, MainActivity::class.java)
         val contentIntent =
             PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -389,7 +389,7 @@ class WebSocketService : Service() {
             .setWhen(System.currentTimeMillis())
             .setSmallIcon(R.mipmap.ic_launcher)
             .setTicker(getString(R.string.app_name))
-            .setGroup(GROUP_MESSAGES)
+            .setGroup(pid.toString())
             .setGroupAlertBehavior(NotificationCompat.GROUP_ALERT_CHILDREN)
             .setContentTitle("TreeHollow Notifications")
             .setGroupSummary(true)
@@ -398,7 +398,12 @@ class WebSocketService : Service() {
             .setContentIntent(contentIntent)
         val notificationManager =
             this.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(-5, b.build())
+        val id = if (pid == null) {
+            -5
+        } else {
+            -5 - pid
+        }
+        notificationManager.notify(id, b.build())
     }
 
     companion object {
